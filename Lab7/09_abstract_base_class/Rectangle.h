@@ -1,9 +1,10 @@
-// Rectangle.h
+// Rectangle.h : Derived class implementing Polygon's pure virtual Area function
 #pragma once
 
 #include "Polygon.h"
 
-class Rectangle : public Polygon {   // public inheritance: Rectangle IS-A Polygon
+class Rectangle : public Polygon {
   public:
-    int Area() override;       // override = I promise this replaces a virtual function of the base class
+    // Override the pure virtual Area function from Polygon
+    int Area() override;
 };

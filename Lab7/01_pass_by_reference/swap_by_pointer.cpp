@@ -1,13 +1,12 @@
-// LAB 7 - PART 1b: Swap two integers using POINTERS
+// Swap two integers using pointers
 #include <iostream>
 using namespace std;
 
-// 'int* a' means: a holds the ADDRESS of an int.
-// We use *a to reach the real variable at that address.
+// Parameters hold the addresses of the two integers
 void SwapNumbers(int* a, int* b) {
-    int temp = *a;     // temp = the value a points at
-    *a = *b;           // the value at a's address becomes the value at b's address
-    *b = temp;         // the value at b's address becomes the saved value
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 int main() {
@@ -17,8 +16,9 @@ int main() {
     cout << "varA before swap: " << varA << endl;
     cout << "varB before swap: " << varB << endl;
 
-    SwapNumbers(&varA, &varB);                      // with pointers the CALLER sends addresses using &
-                                                    // MISTAKE: SwapNumbers(varA, varB) will not compile here
+    // Pass the addresses of varA and varB
+    SwapNumbers(&varA, &varB);
+
     cout << "varA after swap: " << varA << endl;
     cout << "varB after swap: " << varB << endl;
 

@@ -1,26 +1,26 @@
-// LAB 7 - PART 1a: Swap two integers using REFERENCES
+// Swap two integers using references
 #include <iostream>
 using namespace std;
 
-// 'int& a' means: a is another NAME for the caller's variable (no copy is made).
-// So changing a here changes the original variable in main.
+// Parameters act as aliases to the caller's original variables
 void SwapNumbers(int& a, int& b) {
-    int temp = a;      // keep a's value safe in a temporary box
-    a = b;             // a takes b's value
-    b = temp;          // b takes the saved old value of a
-}                      // MISTAKE: without the & signs, you would swap COPIES and main would not change
+    int temp = a;
+    a = b;
+    b = temp;
+}
 
 int main() {
     int varA = 25;
     int varB = 100;
 
-    cout << "varA before swap: " << varA << endl;   // 25
-    cout << "varB before swap: " << varB << endl;   // 100
+    cout << "varA before swap: " << varA << endl;
+    cout << "varB before swap: " << varB << endl;
 
-    SwapNumbers(varA, varB);                        // just pass the variables normally; the & is in the function
+    // Pass variables directly by reference
+    SwapNumbers(varA, varB);
 
-    cout << "varA after swap: " << varA << endl;    // 100
-    cout << "varB after swap: " << varB << endl;    // 25
+    cout << "varA after swap: " << varA << endl;
+    cout << "varB after swap: " << varB << endl;
 
     return 0;
 }

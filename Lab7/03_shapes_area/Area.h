@@ -1,4 +1,4 @@
-// Area.h : a class with NO member variables and NO constructors, only static functions
+// Area.h : Declaration of the Area class
 #pragma once
 #include "Square.h"
 #include "Triangle.h"
@@ -6,7 +6,7 @@
 
 class Area {
 public:
-    // static = you call them on the CLASS (Area::...), you never need to create an Area object
+    // Static methods to calculate the area of each shape
     static float CalculateSquareArea(const shapes::Square& square);
     static float CalculateTriangleArea(const shapes::Triangle& triangle);
     static float CalculateCircleArea(const shapes::Circle& circle);

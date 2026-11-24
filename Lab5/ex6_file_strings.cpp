@@ -1,47 +1,47 @@
-// EXERCISE 6: Read a text file, count vowels and words, reverse, capitalize 2nd letters
+// Exercise 6: Read a text file, count vowels and words, reverse, and capitalize 2nd letters
 #include <iostream>
-#include <fstream>     // ifstream: reading files
-#include <sstream>     // istringstream: splitting text into words
+#include <fstream>
+#include <sstream>
 #include <string>
-#include <cctype>      // tolower, toupper, isalpha
+#include <cctype>
 using namespace std;
 
-// Counts a, e, i, o, u in either case.
+// Count vowels (a, e, i, o, u) regardless of case
 int countVowels(const string& text) {
     int count = 0;
-    for (char c : text) {                          // visit every character
-        char lower = tolower(c);                   // make it lowercase so 'A' and 'a' are treated the same
-        if (lower=='a' || lower=='e' || lower=='i' || lower=='o' || lower=='u') count++;
+    for (char c : text) {
+        char lower = tolower(c);
+        if (lower == 'a' || lower == 'e' || lower == 'i' || lower == 'o' || lower == 'u') count++;
     }
     return count;
 }
 
-// Counts words by letting a stream split on spaces.
+// Count total words separated by whitespace
 int countWords(const string& text) {
     istringstream stream(text);
     string word;
     int count = 0;
-    while (stream >> word) count++;                // each >> grabs the next word
+    while (stream >> word) count++;
     return count;
 }
 
-// Required function name: Reverse. Builds the text backwards.
+// Reverse the input string
 string Reverse(const string& text) {
     string result = "";
-    for (int i = text.size() - 1; i >= 0; i--) {   // start at the LAST character, walk to the first
+    for (int i = text.size() - 1; i >= 0; i--) {
         result += text[i];
     }
     return result;
 }
 
-// Makes the 2nd letter of every word uppercase.
+// Capitalize the second letter of each word
 string capitalizeSecondLetters(string text) {
-    int positionInWord = 0;                        // 0 = first letter of the word, 1 = second, ...
+    int positionInWord = 0;
     for (size_t i = 0; i < text.size(); i++) {
         if (text[i] == ' ') {
-            positionInWord = 0;                    // a space means the next word starts fresh
+            positionInWord = 0;
         } else {
-            if (positionInWord == 1) text[i] = toupper(text[i]);   // second letter, so capitalize it
+            if (positionInWord == 1) text[i] = toupper(text[i]);
             positionInWord++;
         }
     }
@@ -49,14 +49,16 @@ string capitalizeSecondLetters(string text) {
 }
 
 int main() {
-    ifstream file("statement.txt");                // open the file (must be in the folder you run from)
-    if (!file.is_open()) {                         // MISTAKE: file in the wrong folder lands here
+    // Open statement.txt and verify it exists
+    ifstream file("statement.txt");
+    if (!file.is_open()) {
         cout << "Could not open statement.txt" << endl;
         return 1;
     }
 
-    string fileData;                               // required variable name
-    getline(file, fileData);                       // read the line into fileData
+    // Read file contents into fileData
+    string fileData;
+    getline(file, fileData);
     file.close();
 
     cout << "Original text : " << fileData << endl;

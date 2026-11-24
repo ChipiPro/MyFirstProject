@@ -1,14 +1,18 @@
-// Square.h
+// Square.h : Declaration of the Square class inside the shapes namespace
 #pragma once
 
-namespace shapes {                 // a namespace groups related names, so shapes::Square is its full name
+namespace shapes {
     class Square {
     private:
         float mSideLength;
+
     public:
-        Square();                          // default constructor
-        Square(float sideLength);          // overloaded constructor
-        ~Square();                         // destructor
+        // Constructors and destructor
+        Square();
+        Square(float sideLength);
+        ~Square();
+
+        // Setter and getter methods
         void SetSideLength(float sideLength);
         float GetSideLength() const;
     };

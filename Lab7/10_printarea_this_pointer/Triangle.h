@@ -1,9 +1,10 @@
-// Triangle.h
+// Triangle.h : Derived class inheriting publicly from Polygon
 #pragma once
 
 #include "Polygon.h"
 
-class Triangle : public Polygon {   // public inheritance: Triangle IS-A Polygon
+class Triangle : public Polygon {
   public:
-    int Area() override;       // override = I promise this replaces a virtual function of the base class
+    // Override the pure virtual Area function from Polygon
+    int Area() override;
 };

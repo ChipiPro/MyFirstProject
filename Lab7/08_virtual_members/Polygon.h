@@ -1,11 +1,15 @@
-// Polygon.h : the BASE class. Width and height are protected so derived classes can use them.
+// Polygon.h : Base class with protected dimensions and a virtual Area function
 #pragma once
 
 class Polygon {
-  protected:                       // like private, BUT derived classes (Rectangle, Triangle) may access them
-    int mWidth;                    // NOTE: the handout was missing the semicolon after mWidth
+  protected:
+    int mWidth;
     int mHeight;
+
   public:
+    // Set width and height of the polygon
     void SetValues(int width, int height);
-    virtual int Area();            // virtual = "use the version that belongs to the REAL object"
+
+    // Virtual function to be overridden by derived classes
+    virtual int Area();
 };

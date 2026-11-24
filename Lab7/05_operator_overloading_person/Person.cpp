@@ -1,6 +1,7 @@
-// Person.cpp
+// Person.cpp : Implementation of the Person class
 #include "Person.h"
 
+// Constructors and destructor
 Person::Person() {
     mWeight = 0.0f;
     mFirstName = "";
@@ -21,12 +22,12 @@ Person::Person(string newFirstName, float newWeight, int newAge) {
 
 Person::~Person() { }
 
-// Person + Person gives the TOTAL WEIGHT (a float), not a new Person
+// Overload + operator to return the combined weight of two Person objects
 float Person::operator + (const Person& otherPerson) const {
     return mWeight + otherPerson.mWeight;
 }
 
-// Same person if the first names are the same
+// Relational operators to compare first names
 bool Person::operator == (const Person& otherPerson) const {
     return mFirstName == otherPerson.mFirstName;
 }
@@ -34,7 +35,7 @@ bool Person::operator != (const Person& otherPerson) const {
     return mFirstName != otherPerson.mFirstName;
 }
 
-// Younger / older by age
+// Relational operators to compare ages
 bool Person::operator < (const Person& otherPerson) const {
     return mAge < otherPerson.mAge;
 }
@@ -42,7 +43,7 @@ bool Person::operator > (const Person& otherPerson) const {
     return mAge > otherPerson.mAge;
 }
 
-// Conversion operators: they have NO return type written, the type is in the name
+// Type conversion operators
 Person::operator int () const {
     return mAge;
 }

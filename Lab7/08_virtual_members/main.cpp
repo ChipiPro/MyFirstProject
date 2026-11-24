@@ -1,4 +1,4 @@
-// main.cpp : virtual functions. The call goes to the real object's version, not the pointer's type.
+// main.cpp : Polymorphism using virtual member functions
 #include <iostream>
 #include "Rectangle.h"
 #include "Triangle.h"
@@ -9,16 +9,22 @@ int main()
 {
     Rectangle rect;
     Triangle trgl;
-    Polygon poly;                  // allowed here because Polygon is not abstract yet
+    Polygon poly;
+
+    // Base class pointers referencing derived and base objects
     Polygon* pPoly1 = &rect;
     Polygon* pPoly2 = &trgl;
     Polygon* pPoly3 = &poly;
+
+    // Set dimensions for each object
     pPoly1->SetValues(4,5);
     pPoly2->SetValues(4,5);
     pPoly3->SetValues(4,5);
-    cout << pPoly1->Area() << '\n';   // 20 (Rectangle's Area)
-    cout << pPoly2->Area() << '\n';   // 10 (Triangle's Area)
-    cout << pPoly3->Area() << '\n';   // 0  (Polygon's own Area)
-    // Try removing the word 'virtual' in Polygon.h: all three lines would print 0.
+
+    // Virtual Area() resolves to each object's actual type at runtime
+    cout << pPoly1->Area() << '\n';
+    cout << pPoly2->Area() << '\n';
+    cout << pPoly3->Area() << '\n';
+
     return 0;
 }

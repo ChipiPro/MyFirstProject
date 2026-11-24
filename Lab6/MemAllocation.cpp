@@ -1,33 +1,36 @@
-// LAB 6, PART 7: Dynamic memory with new and delete[]
+// Part 7: Dynamic memory allocation with new and delete[]
 #include <iostream>
 using namespace std;
 
 int main() {
-
     int numberOfElements = 0;
-    int* dynamicArray = nullptr;              // will point at memory we request while the program runs
+    int* dynamicArray = nullptr;
 
     cout << "How many numbers would you like to type? ";
     cin >> numberOfElements;
 
-    dynamicArray = new int[numberOfElements]; // ask the system for that many ints (size decided at run time)
+    // Dynamically allocate an integer array of the requested size
+    dynamicArray = new int[numberOfElements];
 
-    if (dynamicArray == nullptr) {            // handout's check for a failed allocation
+    if (dynamicArray == nullptr) {
         cout << "Error: memory could not be allocated";
     }
     else {
-        for (int i = 0; i < numberOfElements; i++) {   // fill the array from the keyboard
+        // Read elements into the dynamic array
+        for (int i = 0; i < numberOfElements; i++) {
             cout << "Enter number: ";
-            cin >> dynamicArray[i];                    // pointer used like an array
+            cin >> dynamicArray[i];
         }
 
+        // Display entered elements
         cout << "You have entered: ";
-        for (int j = 0; j < numberOfElements; j++) {   // print them back
+        for (int j = 0; j < numberOfElements; j++) {
             cout << dynamicArray[j] << ", ";
         }
 
-        delete[] dynamicArray;                // give the memory back. Use delete[] for arrays made with new[]
-    }                                         // MISTAKE: forgetting delete[] causes a memory leak
+        // Free the dynamically allocated array
+        delete[] dynamicArray;
+    }
 
     return 0;
 }

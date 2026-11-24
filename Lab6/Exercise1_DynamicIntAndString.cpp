@@ -1,28 +1,30 @@
-// LAB 6, EXERCISE 1: Dynamically allocate an int and a string, fill them from the user, print them
+// Exercise 1: Dynamically allocate an int and a string
 #include <iostream>
-#include <string>                             // for the string type and getline
+#include <string>
 using namespace std;
 
 int main() {
-
-    int* pNumber = new int;                   // new int      : one int created on the heap
-    string* pText = new string;               // new string   : one string created on the heap
+    // Dynamically allocate an integer and a string on the heap
+    int* pNumber = new int;
+    string* pText = new string;
 
     cout << "Enter an integer: ";
-    cin >> *pNumber;                          // *pNumber means "the int that pNumber points to"
+    cin >> *pNumber;
 
-    cin.ignore(1000, '\n');                   // throw away the leftover Enter key, otherwise getline
-                                              // below would read an empty line
+    // Clear the newline left in the input buffer before calling getline
+    cin.ignore(1000, '\n');
 
     cout << "Enter some text: ";
-    getline(cin, *pText);                     // read a whole line (spaces allowed) into the string
+    getline(cin, *pText);
 
+    // Output the dynamically allocated values
     cout << "The dynamically allocated integer is: " << *pNumber << endl;
     cout << "The dynamically allocated string is: " << *pText << endl;
 
-    delete pNumber;                           // single objects use delete (NOT delete[])
+    // Free allocated memory and reset pointers
+    delete pNumber;
     delete pText;
-    pNumber = nullptr;                        // good habit: stop pointers from pointing at freed memory
+    pNumber = nullptr;
     pText = nullptr;
 
     return 0;

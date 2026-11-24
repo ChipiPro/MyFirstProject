@@ -1,9 +1,10 @@
-// Rectangle.h
+// Rectangle.h : Derived class inheriting publicly from Polygon
 #pragma once
 
 #include "Polygon.h"
 
-class Rectangle : public Polygon {   // public inheritance: Rectangle IS-A Polygon
+class Rectangle : public Polygon {
   public:
+    // Calculate and return the area of the rectangle
     int Area();
 };

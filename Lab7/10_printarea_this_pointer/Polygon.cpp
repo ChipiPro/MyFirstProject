@@ -1,15 +1,17 @@
-// Polygon.cpp
+// Polygon.cpp : Implementation of the Polygon class
 #include "Polygon.h"
 #include <iostream>
 using namespace std;
 
+// Set width and height of the polygon
 void Polygon::SetValues(int width, int height)
 {
     mWidth = width;
     mHeight = height;
 }
 
+// Print the area by calling the derived class's Area() method via the this pointer
 void Polygon::PrintArea()
 {
-    cout << this->Area() << '\n';  // 'this' is the actual object. Area() is virtual, so the DERIVED version runs.
-}                                   // (the handout wrote this->area() with a lowercase a, which would not compile)
+    cout << this->Area() << '\n';
+}

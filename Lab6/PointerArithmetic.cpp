@@ -1,25 +1,30 @@
-// LAB 6, PART 6: Pointer arithmetic with ++
+// Part 6: Pointer arithmetic with ++
 #include <iostream>
 using namespace std;
 
 int main() {
-
-    int* pPointer = nullptr;                  // null pointer to start
+    int* pPointer = nullptr;
 
     int numbersArray[3] = {10, 20, 30};
 
-    pPointer = numbersArray;                  // point at the first element
+    // Assign address of the first element to pPointer
+    pPointer = numbersArray;
 
-    cout << "Address at pPointer: " << pPointer << endl;            // address of element 0
-    cout << "Address of numbersArray[0]: " << &numbersArray[0] << endl;   // same address as above
+    // Output the address of the first element
+    cout << "Address at pPointer: " << pPointer << endl;
+    cout << "Address of numbersArray[0]: " << &numbersArray[0] << endl;
 
-    cout << "Value at pPointer: " << *pPointer << endl;             // 10 (first element)
+    // Output the value of the first element
+    cout << "Value at pPointer: " << *pPointer << endl;
 
-    cout << "Value at ++pPointer: " << *(++pPointer) << endl;       // PREFIX: move first, then read: 20
+    // Move to the second element first, then output its value
+    cout << "Value at ++pPointer: " << *(++pPointer) << endl;
 
-    pPointer = numbersArray;                  // reset to the first element
+    // Reset pointer to the first element
+    pPointer = numbersArray;
 
-    cout << "Value at pPointer++: " << *(pPointer++) << endl;       // POSTFIX: read the old spot (10),
-                                                                    // THEN move. pPointer is now on 20
+    // Output the first element's value, then increment the pointer
+    cout << "Value at pPointer++: " << *(pPointer++) << endl;
+
     return 0;
 }

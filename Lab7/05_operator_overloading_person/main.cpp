@@ -1,41 +1,41 @@
-// main.cpp : Questions 2, 3 and 4 combined (the handout adds to the same main step by step)
+// main.cpp : Driver program testing overloaded and conversion operators for Person
 #include <iostream>
 #include "Person.h"
 
 int main() {
-    // The handout main had no ages. Ages are added here so the < and > tests have something to compare.
+    // Initialize Person objects with name, weight, and age
     Person Jane = Person("Jane", 60.0f, 25);
     Person John = Person("John", 75.0f, 30);
 
-    // ----- 2(c) the + operator -----
+    // Test overloaded + operator
     float totalWeight = Jane + John;
-    cout << "Total weight: " << totalWeight << endl;               // 135
+    cout << "Total weight: " << totalWeight << endl;
 
-    // ----- 2(d) == and != using first names -----
+    // Test relational operators == and != using first names
     if (Jane == John) {
         cout << "This is the same person" << endl;
     }
     if (Jane != John) {
-        cout << "This is NOT the same person" << endl;             // printed (names differ)
+        cout << "This is NOT the same person" << endl;
     }
 
-    // ----- 2(e) < and > using age -----
+    // Test relational operators < and > using ages
     if (Jane < John) {
-        cout << "Jane is younger than John" << endl;               // printed (25 < 30)
+        cout << "Jane is younger than John" << endl;
     }
     if (John > Jane) {
-        cout << "John is older than Jane" << endl;                 // printed
+        cout << "John is older than Jane" << endl;
     }
 
-    // ----- 3: conversion operator int -----
-    int johnAge = John;                                            // C++ calls John.operator int()
-    cout << "John's Age: " << johnAge << endl;                     // 30
+    // Test int conversion operator
+    int johnAge = John;
+    cout << "John's Age: " << johnAge << endl;
 
-    // ----- 4: conversion operators string and float -----
-    string janeFirstName = Jane;                                   // calls operator string()
+    // Test string and float conversion operators
+    string janeFirstName = Jane;
     cout << "Jane's FirstName: " << janeFirstName << endl;
 
-    float janeWeight = Jane;                                       // calls operator float()
+    float janeWeight = Jane;
     cout << "Jane's weight: " << janeWeight << endl;
 
     return 0;

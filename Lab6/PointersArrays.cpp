@@ -1,38 +1,37 @@
-// LAB 6, PART 3: Pointers and arrays
+// Part 3: Pointers and arrays
 #include <iostream>
 using namespace std;
 
 int main() {
-
-    int numbersArray[5];                      // array of 5 ints (positions 0 to 4)
+    int numbersArray;
 
     int * pPointer = nullptr;
 
-    pPointer = numbersArray;                  // an array's NAME is the address of its first element
-                                              // (no & needed here)
+    // Assign the address of the first element to the pointer
+    pPointer = numbersArray;
+    *pPointer = 10;
 
-    *pPointer = 10;                           // first element = 10
+    // Increment the pointer to assign a value to the second element
+    pPointer++;
+    *pPointer = 20;
 
-    pPointer++;                               // pointer arithmetic: move to the NEXT int (second element)
-    *pPointer = 20;                           // second element = 20
+    // Assign the address of the third element to the pointer
+    pPointer = &numbersArray;
+    *pPointer = 30;
 
-    pPointer = &numbersArray[2];              // & of element 2 = address of the third element
-    *pPointer = 30;                           // third element = 30
+    // Assign the address of the fourth element using pointer arithmetic
+    pPointer = numbersArray + 3;
+    *pPointer = 40;
 
-    pPointer = numbersArray + 3;              // array start + 3 steps = fourth element
-    *pPointer = 40;                           // fourth element = 40
+    // Reset pointer to the first element and assign the fifth element
+    pPointer = numbersArray;
+    *(pPointer + 4) = 50;
 
-    pPointer = numbersArray;                  // reset pointer back to the first element
-
-    *(pPointer + 4) = 50;                     // go 4 elements ahead WITHOUT moving pPointer, then set it
-                                              // NOTE: the handout wrote *(p+4), but the pointer is named
-                                              // pPointer, so p would not compile.
-                                              // The brackets matter: *pPointer + 4 would mean "value + 4"
-
-    for (int n = 0; n < 5; n++) {             // print all 5 elements
+    // Output all elements in the array
+    for (int n = 0; n < 5; n++) {
         cout << numbersArray[n] << ", ";
     }
-    cout << endl;                             // expected: 10, 20, 30, 40, 50,
+    cout << endl;
 
     return 0;
 }

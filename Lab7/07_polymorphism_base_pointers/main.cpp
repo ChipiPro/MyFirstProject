@@ -1,4 +1,4 @@
-// main.cpp : a pointer to the BASE class can point at a DERIVED object
+// main.cpp : Using base class pointers to access derived objects
 #include <iostream>
 #include "Rectangle.h"
 #include "Triangle.h"
@@ -8,13 +8,18 @@ using namespace std;
 int main() {
     Rectangle rect;
     Triangle trgl;
-    Polygon* pPoly1 = &rect;       // allowed: a Rectangle IS-A Polygon
+
+    // Base class pointers pointing to derived objects
+    Polygon* pPoly1 = &rect;
     Polygon* pPoly2 = &trgl;
-    pPoly1->SetValues(4,5);        // pointer to Polygon can only reach Polygon's members
+
+    // Set dimensions through base class pointers
+    pPoly1->SetValues(4,5);
     pPoly2->SetValues(4,5);
 
-    // pPoly1->Area() would NOT compile here: Polygon has no Area(). So we use the objects directly.
-    cout << rect.Area() << '\n';   // 20
-    cout << trgl.Area() << '\n';   // 10
+    // Call Area() directly on the derived objects
+    cout << rect.Area() << '\n';
+    cout << trgl.Area() << '\n';
+
     return 0;
 }

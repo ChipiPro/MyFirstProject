@@ -1,4 +1,4 @@
-// main.cpp : menu-driven area calculator using the shapes classes and the Area class
+// main.cpp : Menu-driven area calculator using the shapes namespace and Area class
 #include <iostream>
 #include <string>
 #include "Square.h"
@@ -7,7 +7,8 @@
 #include "Area.h"
 using namespace std;
 
-float readPositive(const string& prompt) {         // keeps asking until a positive number is typed
+// Prompt until a valid positive number is entered
+float readPositive(const string& prompt) {
     while (true) {
         cout << prompt;
         string line;
@@ -22,7 +23,8 @@ float readPositive(const string& prompt) {         // keeps asking until a posit
 }
 
 int main() {
-    while (true) {                                  // runs until the user chooses Quit
+    // Repeat menu until the user selects Quit
+    while (true) {
         cout << "\n1. Calculate the area of a square\n"
              << "2. Calculate the area of a triangle\n"
              << "3. Calculate the area of a circle\n"
@@ -33,8 +35,8 @@ int main() {
         if (!getline(cin, choice)) break;
 
         if (choice == "1") {
-            shapes::Square square;                                  // create the object
-            square.SetSideLength(readPositive("Enter the side length: "));   // give it the user's value
+            shapes::Square square;
+            square.SetSideLength(readPositive("Enter the side length: "));
             cout << "Area of the square: " << Area::CalculateSquareArea(square) << endl;
         }
         else if (choice == "2") {
@@ -56,5 +58,6 @@ int main() {
             cout << "Invalid choice. Please enter 1, 2, 3 or 4." << endl;
         }
     }
+
     return 0;
 }
